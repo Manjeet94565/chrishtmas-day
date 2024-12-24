@@ -1,0 +1,360 @@
+.body {
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+    /* Dark background for better visibility of snow */
+    overflow: hidden;
+    /* Prevent scrollbars */
+    position: relative;
+    height: 100vh;
+}
+
+.message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3em;
+    color: red;
+    text-shadow: 2px 4px 10px rgb(127, 9, 9), 0 0 20px white, 0 0 30px white;
+    animation: glow 1.5s infinite alternate;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.merry {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.merry .m {
+    position: relative;
+    display: inline-block;
+    opacity: 0;
+    animation: mAppear 2s forwards;
+    animation-delay: 2s;
+}
+
+.merry .erry {
+    opacity: 0;
+    animation: erryAppear 2s forwards;
+    animation-delay: 2s;
+}
+
+.balloon {
+    position: absolute;
+    top: -100px; /* Adjust as needed */
+    left: -10px; /* Adjust as needed */
+    width: 30px; /* Adjust as needed */
+    height: 50px; /* Adjust as needed */
+    background: red;
+    border-radius: 50% 50% 0 0;
+    animation: balloonFloat 0.5s forwards;
+    animation-delay: 2s;
+}
+
+.balloon::before {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    width: 2px;
+    height: 20px;
+    background: red;
+    transform: translateX(-50%);
+}
+
+.merry,
+.christmas {
+    opacity: 0;
+}
+
+.merry {
+    animation: merryAppear 2s forwards;
+}
+
+.christmas {
+    animation: christmasAppear 2s forwards;
+    animation-delay: 2s;
+}
+
+@keyframes merryAppear {
+    0% {
+        opacity: 0;
+        transform: translateY(-100px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes erryAppear {
+    0% {
+        opacity: 0;
+        transform: translateY(-100px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes christmasAppear {
+    0% {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes balloonFloat {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(50px); /* Adjusted from 100px to 50px */
+    }
+}
+
+@keyframes balloonDisappear {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px white;
+    }
+
+    to {
+        text-shadow: 0 0 20px white, 0 0 30px white, 0 0 40px white;
+    }
+}
+
+.snowflake {
+    position: absolute;
+    top: -10px;
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: fall 10s linear infinite;
+    box-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px white;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(100vh);
+    }
+}
+
+/* Example of multiple snowflakes */
+.snowflake:nth-child(1) {
+    left: 10%;
+    animation-duration: 8s;
+    animation-delay: 0s;
+}
+
+.snowflake:nth-child(2) {
+    left: 20%;
+    animation-duration: 10s;
+    animation-delay: 2s;
+}
+
+.snowflake:nth-child(3) {
+    left: 30%;
+    animation-duration: 12s;
+    animation-delay: 4s;
+}
+
+.snowflake:nth-child(4) {
+    left: 70%;
+    animation-duration: 9s;
+    animation-delay: 1s;
+}
+
+.snowflake:nth-child(5) {
+    left: 90%;
+    animation-duration: 11s;
+    animation-delay: 3s;
+}
+
+/* Add more snowflakes as needed */
+
+/* Snow surface at the bottom */
+.snow-surface {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    /* Adjust height as needed */
+    background: linear-gradient(to top, white 50%, transparent 50%);
+    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+    box-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px white;
+    /* Add glow effect */
+}
+
+.christmas-tree {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 100px solid green;
+}
+
+.christmas-tree .tree-part {
+    position: absolute;
+    bottom: 0;
+    left: -50px;
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 100px solid green;
+}
+
+.christmas-tree .tree-part:nth-child(2) {
+    bottom: 50px;
+    left: -40px;
+    border-left: 40px solid transparent;
+    border-right: 40px solid transparent;
+    border-bottom: 80px solid green;
+}
+
+.christmas-tree .tree-part:nth-child(3) {
+    bottom: 100px;
+    left: -30px;
+    border-left: 30px solid transparent;
+    border-right: 30px solid transparent;
+    border-bottom: 60px solid green;
+}
+
+.christmas-tree .tree-trunk {
+    position: absolute;
+    bottom: -20px;
+    left: -10px;
+    width: 20px;
+    height: 20px;
+    background-color: brown;
+    background: linear-gradient(to bottom, #8b4513 0%, #5a2d0c 100%);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.christmas-tree.left {
+    left: 10px;
+}
+
+/* Positioning for the right tree */
+.christmas-tree.right {
+    right: 10px;
+}
+
+@keyframes sway {
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(5deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+.stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.star {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 0 10px white, 0 0 20px white, 0 0 40px white;
+    animation: twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle {
+    0% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.wish-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2em;
+    color: rgb(251, 251, 244);
+    text-shadow: 2px 4px 10px rgba(235, 3, 130, 0.8), 0 0 20px white, 0 0 30px white;
+    animation: glow 1.5s infinite alternate;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer; /* Add cursor pointer to indicate clickability */
+}
+
+.wish-message .word {
+    display: inline-block;
+    opacity: 1;
+    transition: transform 1s, opacity 1s;
+}
+
+.click-hint {
+    margin-top: 10px;
+    font-size: 1em;
+    color: yellow;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+
+@keyframes flyAway {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-100px);
+    }
+}
+
